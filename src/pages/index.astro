@@ -44,7 +44,7 @@ const top = news[0];
         <div><a class="btn" href={url('/message/')}>教授あいさつを読む</a></div>
       </div>
       <div class="portrait">
-        <div class="placeholder" style="aspect-ratio:4/5">[ 教授ポートレート写真 ]</div>
+        <div class="stamp"><img src={url('/images/hirata-portrait.png')} alt="平田健司教授の似顔絵（版画）" width="579" height="723" loading="lazy" /></div>
         <div class="cap">
           <span class="serif name">平田 健司</span>
           <span class="en role">Kenji Hirata, MD, PhD　教授・核医学診療科長</span>
@@ -217,6 +217,8 @@ const top = news[0];
   .msg .text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
   .portrait { flex: 0 0 440px; max-width: 100%; display: flex; flex-direction: column; gap: 14px; }
   .portrait .cap { display: flex; flex-direction: column; line-height: 1.5; }
+  .stamp { background: #f2efe8; padding: 36px; border: 1px solid var(--line); }
+  .stamp img { width: 100%; height: auto; }
   .portrait .name { font-size: 20px; font-weight: 600; }
   .portrait .role { font-size: 12px; letter-spacing: .14em; color: var(--muted); }
 

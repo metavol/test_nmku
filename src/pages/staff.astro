@@ -2,8 +2,8 @@
 import Page from '../layouts/Page.astro';
 import { url } from '../lib/site';
 
-const staff = [
-  { name: '平田 健司', en: 'Kenji Hirata', role: '教授（第四代）・核医学診療科長', field: '核医学診断、核医学治療、人工知能（AI）' },
+const staff: { name: string; en: string; role: string; field: string; img?: string }[] = [
+  { name: '平田 健司', en: 'Kenji Hirata', role: '教授（第四代）・核医学診療科長', field: '核医学診断、核医学治療、人工知能（AI）', img: '/images/hirata-portrait.png' },
   { name: '絹谷 清剛', en: 'Seigo Kinuya', role: '副学長・理事（第三代教授）', field: '腫瘍、免疫核医学、核医学治療' },
   { name: '萱野 大樹', en: 'Daiki Kayano', role: '准教授', field: '腫瘍、核医学治療、甲状腺' },
   { name: '稲木 杏吏', en: 'Anri Inaki', role: '特任准教授（国立がん研究センター 分野長 併任）', field: '甲状腺、核医学治療' },
@@ -27,7 +27,9 @@ const alumni = ['奥田 光一（2026年より 金沢大学医薬保健研究域
   <div class="grid grid-3">
     {staff.map((s) => (
       <div class="person">
-        <div class="placeholder" style="aspect-ratio:1/1">[ 写真 ]</div>
+        {s.img
+          ? <div style="aspect-ratio:1/1;background:#f2efe8;display:flex;align-items:center;justify-content:center;padding:12px"><img src={url(s.img)} alt={`${s.name}の似顔絵`} style="max-height:100%;width:auto" /></div>
+          : <div class="placeholder" style="aspect-ratio:1/1">[ 写真 ]</div>}
         <span class="serif name">{s.name}</span>
         <span class="en" style="font-size:12px;letter-spacing:.1em;color:var(--muted)">{s.en}</span>
         <span class="role">{s.role}</span>
