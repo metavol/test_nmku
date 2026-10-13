@@ -1,0 +1,72 @@
+---
+import Page from '../../layouts/Page.astro';
+import { url } from '../../lib/site';
+---
+<Page title="核医学検査・専門分野" en="Nuclear Imaging" crumbs={[{ href: '/clinical/', label: '診療' }]} description="心臓・腫瘍・脳・内分泌の核医学検査と、当科の専門分野。">
+  <div class="two-col">
+    <article class="main prose">
+      <h2 id="cardiac">心臓核医学 <span class="en" style="font-size:14px;color:var(--muted);letter-spacing:.1em">Nuclear Cardiology</span></h2>
+      <p>SPECTやPETで、心筋の血流・機能・代謝を評価します。冠動脈造影が冠動脈の形態的な狭窄を調べるのに対し、心臓核医学は心筋細胞レベルの血流と代謝の情報を捉えます。虚血性心疾患における血流・機能の診断、治療効果判定、リスク層別化、予後評価の有用性は確立しており、米国および日本循環器学会のガイドラインにその役割がまとめられています。</p>
+      <h3>特に役立つ場面</h3>
+      <ul>
+        <li>冠動脈疾患の有無が不明な場合</li>
+        <li>冠動脈狭窄が分かっていて、その領域に虚血が生じるかを知りたい場合</li>
+        <li>梗塞後の心筋で、機能が回復するかを予測したい場合</li>
+        <li>将来の心事故（死亡、心筋梗塞）の可能性を知りたい場合</li>
+        <li>手術前に心機能を評価したい場合</li>
+      </ul>
+      <h3>核医学で分かる心筋の情報</h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><th>心筋血流</th><td>安静時・負荷時の血流予備能（Tl-201、Tc-99m MIBI、Tc-99m tetrofosmin）</td></tr>
+          <tr><th>心筋代謝</th><td>脂肪酸代謝（I-123 BMIPP）</td></tr>
+          <tr><th>交感神経活動</th><td>I-123 MIBG</td></tr>
+          <tr><th>障害心筋</th><td>Tc-99m ピロリン酸（心アミロイドーシスの評価にも用います）</td></tr>
+          <tr><th>心収縮機能</th><td>Tc-99m 標識赤血球による拍出量・収縮の定量</td></tr>
+          <tr><th>PET</th><td>N-13 アンモニア・Rb-82（血流）、F-18 FDG（糖代謝）ほか</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="oncology">腫瘍核医学 <span class="en" style="font-size:14px;color:var(--muted);letter-spacing:.1em">Nuclear Oncology</span></h2>
+      <ul>
+        <li>PET画像診断（FDG-PET、PSMA-PET など）</li>
+        <li>SPECT画像診断（骨シンチグラフィ、ソマトスタチン受容体シンチグラフィ など）</li>
+        <li>甲状腺癌・骨転移に対する放射性同位元素治療</li>
+        <li>放射免疫療法</li>
+      </ul>
+      <p>PET検査は金沢先進医学センターで実施しています。</p>
+
+      <h2 id="neuro">脳核医学 <span class="en" style="font-size:14px;color:var(--muted);letter-spacing:.1em">Nuclear Neurology</span></h2>
+      <p>中枢神経領域では主に脳血流の診断を行っています。脳血管障害では、太い動脈の狭窄・閉塞の情報に加えて、脳の細胞レベルの血流情報が重要で、核医学がこれを担います。腫瘍性病変では、グレード評価、治療への反応評価、グリオーシスとの鑑別などを行います。</p>
+      <ul>
+        <li>脳血流：安静時の血流と、各種負荷に対する血流変化・予備能（Tc-99m HMPAO、Tc-99m ECD、I-123 IMP）</li>
+        <li>認知症・パーキンソン病：ドパミントランスポーター、心筋MIBG、アミロイドPET など</li>
+        <li>腫瘍性病変：Tl-201、Tc-99m MIBI</li>
+      </ul>
+
+      <h2 id="endocrine">内分泌核医学 <span class="en" style="font-size:14px;color:var(--muted);letter-spacing:.1em">Nuclear Endocrinology</span></h2>
+      <h3>甲状腺</h3>
+      <ul>
+        <li>機能評価：I-123 摂取率測定。甲状腺中毒症では甲状腺機能亢進症と破壊性甲状腺炎を、甲状腺機能低下症では可逆性と不可逆性を鑑別します。</li>
+        <li>画像化：I-123 や Tc-99m pertechnetate。</li>
+        <li>バセドウ病の治療：抗甲状腺薬、I-131 内用療法。</li>
+        <li>甲状腺癌の治療：手術後の I-131 治療を中心に、総合的に治療します。</li>
+        <li>甲状腺外来：月・水・木曜。超音波検査、細胞診、針生検で甲状腺腫瘍を診断します。</li>
+      </ul>
+      <h3>副甲状腺・副腎</h3>
+      <ul>
+        <li>副甲状腺：腺腫・過形成の局在診断（Tc-99m MIBI など）。</li>
+        <li>副腎：I-131 アドステロールによる副腎皮質シンチグラフィ、I-123 MIBG による副腎髄質シンチグラフィ。</li>
+      </ul>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="専門分野">
+        <a href="#cardiac"><span>心臓</span><span class="en">→</span></a>
+        <a href="#oncology"><span>腫瘍</span><span class="en">→</span></a>
+        <a href="#neuro"><span>脳</span><span class="en">→</span></a>
+        <a href="#endocrine"><span>内分泌</span><span class="en">→</span></a>
+        <a href={url('/clinical/therapy/')}><span>核医学治療</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

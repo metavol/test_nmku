@@ -1,0 +1,30 @@
+---
+import Page from '../layouts/Page.astro';
+const groups = [
+  { t: '学会', links: [
+    ['日本核医学会', 'http://www.jsnm.org/'], ['日本医学放射線学会', 'http://www.radiology.jp/'], ['日本心臓核医学会', 'http://www.jsnc.org/'],
+    ['日本循環器学会', 'http://www.j-circ.or.jp/'], ['日本画像医学会', 'http://www.gazoigaku.gr.jp/'], ['日本アイソトープ協会', 'http://www.jrias.or.jp/'],
+    ['日本核医学会中部地方会', 'http://jsnm-cyuubu.kenkyuukai.jp/about/index.asp?'], ['日本心血管画像動態学会', 'http://www.jscvid.org'],
+    ['SNMMI (Society of Nuclear Medicine and Molecular Imaging)', 'http://www.snmmi.org/'], ['EANM (European Association of Nuclear Medicine)', 'http://www.eanm.org/'],
+    ['ASNC (American Society of Nuclear Cardiology)', 'http://www.asnc.org/'], ['American Heart Association', 'http://www.heart.org/HEARTORG/'], ['American College of Cardiology', 'https://www.acc.org/'],
+  ]},
+  { t: '研究会', links: [
+    ['放射線診療研究会 臨床核医学', 'http://www.rinshokaku.com'], ['金沢甲状腺研究会', 'https://sites.google.com/view/kanazawa-thyroid-symposium'],
+  ]},
+  { t: 'その他', links: [
+    ['核医学診療推進国民会議', 'https://www.ncnmt.jp/'], ['核医学 e-learning サイト（PDF）', 'http://nucmed.w3.kanazawa-u.ac.jp/pdf/NMe-learning.pdf'],
+    ['金沢大学核医学 同友会誌 2025（PDF）', 'http://nucmed.w3.kanazawa-u.ac.jp/pdf/nm2025.pdf'], ['金沢大学核医学 同友会誌 2026（PDF・パスワード）', 'http://nucmed.w3.kanazawa-u.ac.jp/pdf/nm2026.pdf'],
+    ['金沢大学附属病院', 'https://web.hosp.kanazawa-u.ac.jp/'], ['金沢大学', 'https://www.kanazawa-u.ac.jp/'],
+  ]},
+];
+---
+<Page title="リンク" en="Links" description="関連学会・研究会・機関へのリンク集。">
+  <div class="prose">
+    {groups.map((g) => (
+      <section>
+        <h2>{g.t}</h2>
+        <ul>{g.links.map(([n, u]) => <li><a href={u} target="_blank" rel="noopener">{n}</a></li>)}</ul>
+      </section>
+    ))}
+  </div>
+</Page>

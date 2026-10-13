@@ -1,0 +1,50 @@
+---
+import Page from '../layouts/Page.astro';
+import { url, SITE } from '../lib/site';
+---
+<Page title="教育／研修" en="Teaching" description="金沢大学核医学の教育・研修。学生実習、インターンシップ、研修医プログラム、大学院。">
+  <div class="two-col">
+    <article class="main prose">
+      <p>金沢大学核医学では、SPECT・PETによる核医学画像診断、核医学治療、甲状腺診療を含む総合的な核医学の研修を行っています。国内の大学では珍しい核医学専門の講座で、各領域の専門医が在籍しているため、一般的な内容から高度な専門領域まで幅広く学べます。</p>
+
+      <h2 id="resident">研修医の皆さんへ</h2>
+      <h3>放射線科専門医を目指す方へ</h3>
+      <p>金沢大学には「放射線科学」と「核医学」の2つの講座があり、放射線科専門研修は両講座合同のカリキュラムで行われます。核医学講座に入局した場合も、放射線科専門医の資格取得までは合同カリキュラムを受けることになります。詳細は医局長にお問い合わせください。</p>
+      <h3>医局説明会</h3>
+      <p>毎年、医局説明会を開催しています。開催時期は<a href={url('/news/')}>お知らせ</a>で案内します。個別の見学・相談も随時受け付けています。</p>
+
+      <h2 id="internship">学生の皆さんへ</h2>
+      <h3>核医学実習・インターンシップ（6年生実習）</h3>
+      <p>医学部の核医学実習に加えて、6年生を対象としたインターンシップ（臨床実習）を行っています。実習の詳細や実習以外のことは医局説明会で説明します。</p>
+      <p><a href="https://nucmed.w3.kanazawa-u.ac.jp/lectures/detail.php?d_no=239" target="_blank" rel="noopener">実習感想文（旧サイト）</a></p>
+
+      <h2 id="graduate">大学院</h2>
+      <p>医薬保健学総合研究科（医学専攻）で、核医学の臨床研究・基礎研究の指導を行っています。留学生も多く在籍しています。</p>
+      <p><a href="https://nucmed.w3.kanazawa-u.ac.jp/lectures/detail.php?d_no=303" target="_blank" rel="noopener">入局・大学院入学のご挨拶（旧サイト）</a>　／　<a href="https://nucmed.w3.kanazawa-u.ac.jp/lectures/detail.php?d_no=237" target="_blank" rel="noopener">博士号取得者のご報告（旧サイト）</a></p>
+
+      <h2 id="elearning">核医学 e-learning</h2>
+      <p>核医学を学べる Web サイトを公開しています。<a href="https://nucmed.w3.kanazawa-u.ac.jp/pdf/NMe-learning.pdf" target="_blank" rel="noopener">核医学 e-learning サイト（PDF）</a></p>
+
+      <h2 id="voices">先輩医師の声</h2>
+      <p class="todo">入局年の異なる3〜6名の先生に、写真・一言・短いインタビュー（なぜ核医学を選んだか、1日の流れ、研究と生活の両立など）をお願いしてください。呼吸器内科サイトの「先輩医師の声」が参考になります。</p>
+
+      <h2>お問い合わせ</h2>
+      <p>研修・見学・入局に関するお問い合わせは、金沢大学附属病院核医学診療科 医局長 若林大志までご連絡ください。</p>
+      <ul>
+        <li>{SITE.address}</li>
+        <li>電話 {SITE.tel}（医局）／ FAX {SITE.fax}</li>
+        <li>メール {SITE.email}（医局）</li>
+      </ul>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="教育／研修">
+        <a href="#resident"><span>研修医の皆さんへ</span><span class="en">→</span></a>
+        <a href="#internship"><span>学生の皆さんへ</span><span class="en">→</span></a>
+        <a href="#graduate"><span>大学院</span><span class="en">→</span></a>
+        <a href="#elearning"><span>核医学 e-learning</span><span class="en">→</span></a>
+        <a href="#voices"><span>先輩医師の声</span><span class="en">→</span></a>
+        <a href={url('/contact/')}><span>見学を申し込む</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

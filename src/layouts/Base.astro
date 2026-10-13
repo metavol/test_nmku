@@ -1,0 +1,159 @@
+---
+import '../styles/global.css';
+import { SITE, NAV, url } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description = SITE.description } = Astro.props;
+const pageTitle = title ? `${title}｜${SITE.name}` : `${SITE.name}｜${SITE.nameEn}`;
+const current = Astro.url.pathname;
+const isActive = (href: string) => current.startsWith(url(href));
+---
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Jost:wght@400;500;600&display=swap" />
+</head>
+<body>
+  <a class="skip" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a href={url('/')} class="brand">
+        <span class="en brand-en">KANAZAWA UNIVERSITY</span>
+        <span class="serif brand-ja">金沢大学 核医学</span>
+      </a>
+      <nav class="nav" aria-label="メインメニュー">
+        {NAV.map((n) => (
+          <a href={url(n.href)} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a>
+        ))}
+        <a href={url('/patients/')} class="pill">患者さんへ</a>
+      </nav>
+      <button class="burger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile" id="mobile-menu" hidden>
+      <nav class="wrap" aria-label="モバイルメニュー">
+        {NAV.map((n) => <a href={url(n.href)}>{n.label}</a>)}
+        <a href={url('/patients/')}>患者さんへ</a>
+        <a href={url('/links/')}>リンク</a>
+        <a href={url('/contact/')}>お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main"><slot /></main>
+
+  <section class="dark contact-band">
+    <div class="wrap row">
+      <div class="col">
+        <span class="eyebrow light">Contact</span>
+        <h2 class="h2" style="font-size:36px">見学・ご相談はお気軽に。</h2>
+        <p style="color:var(--sky);line-height:2">医局見学・病院見学は随時受け付けています。オンラインでのご相談も可能です。医療機関からのご紹介・お問い合わせもこちらから。</p>
+      </div>
+      <div class="col info">
+        <span class="en tel">{SITE.tel}</span>
+        <span class="en mail">{SITE.email}</span>
+        <a class="btn light" href={url('/contact/')}>お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="row">
+        <div class="addr">
+          <span class="serif org">金沢大学医薬保健研究域医学系 核医学<br />金沢大学附属病院 核医学診療科</span>
+          <span>{SITE.address}</span>
+          <span>Tel {SITE.tel} ／ Fax {SITE.fax}</span>
+          <div class="sns">
+            <a class="en" href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
+            <a class="en" href={SITE.facebook} target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+        <nav class="fnav" aria-label="フッターメニュー">
+          {NAV.map((n) => <a href={url(n.href)}>{n.label}</a>)}
+          <a href={url('/patients/')}>患者さんへ</a>
+          <a href={url('/kenkyukai/')}>北陸循環器核医学研究会</a>
+          <a href={url('/conference/')}>核医学カンファレンス</a>
+          <a href={url('/links/')}>リンク</a>
+          <a href={url('/contact/')}>お問い合わせ</a>
+        </nav>
+      </div>
+      <div class="legal en">
+        <span>© DEPARTMENT OF NUCLEAR MEDICINE, KANAZAWA UNIVERSITY</span>
+        <span>SINCE 1973</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.burger') as HTMLButtonElement | null;
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'メニューを開く' : 'メニューを閉じる');
+      if (menu) menu.hidden = open;
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  .skip { position: absolute; left: -999px; top: 8px; background: #fff; padding: 8px 12px; z-index: 100; }
+  .skip:focus { left: 8px; }
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgba(251,250,247,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 32px; height: 84px; }
+  .brand { display: flex; flex-direction: column; line-height: 1.2; color: var(--ink); }
+  .brand-en { font-size: 10px; letter-spacing: .3em; color: var(--muted); }
+  .brand-ja { font-size: 22px; font-weight: 600; letter-spacing: .06em; }
+  .nav { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 500; letter-spacing: .04em; }
+  .nav a { color: var(--ink); } .nav a:hover, .nav a[aria-current="page"] { color: var(--teal); }
+  .nav .pill { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; background: var(--teal); color: #fff; }
+  .nav .pill:hover { background: var(--teal-deep); color: #fff; }
+  .burger { display: none; width: 44px; height: 44px; border: 0; background: transparent; flex-direction: column; justify-content: center; gap: 6px; padding: 0; cursor: pointer; }
+  .burger span { display: block; height: 2px; background: var(--ink); }
+  .mobile { border-top: 1px solid var(--line); background: var(--paper); }
+  .mobile nav { display: flex; flex-direction: column; padding-block: 8px; }
+  .mobile a { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 15px; }
+  .mobile a:last-child { border-bottom: 0; }
+
+  .contact-band { padding-block: 100px; }
+  .contact-band .row { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+  .contact-band .col { display: flex; flex-direction: column; gap: 18px; max-width: 560px; }
+  .contact-band .info { align-items: flex-start; gap: 14px; }
+  .tel { font-size: 34px; font-weight: 500; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+  .mail { font-size: 14px; color: var(--sky); letter-spacing: .04em; }
+
+  .site-footer { background: var(--navy-deep); color: var(--sky); padding-block: 56px 40px; }
+  .site-footer .row { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .addr { display: flex; flex-direction: column; gap: 8px; line-height: 1.7; font-size: 13px; }
+  .org { font-size: 18px; color: #fff; font-weight: 600; }
+  .sns { display: flex; gap: 10px; margin-top: 10px; }
+  .sns a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid rgba(255,255,255,.25); border-radius: 4px; font-size: 12px; letter-spacing: .14em; color: #fff; }
+  .fnav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 40px; font-size: 13px; }
+  .fnav a { color: var(--sky); } .fnav a:hover { color: #fff; }
+  .legal { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11px; letter-spacing: .14em; color: #6f8a95; border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; margin-top: 36px; }
+
+  @media (max-width: 900px) {
+    .nav { display: none; }
+    .burger { display: flex; }
+    .contact-band { padding-block: 72px; }
+    .contact-band .row { flex-direction: column; align-items: flex-start; }
+    .tel { font-size: 28px; }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import Page from '../layouts/Page.astro';
+import { url } from '../lib/site';
+---
+<Page title="研究" en="Research" description="金沢大学核医学の研究紹介。心臓核医学とAI、セラノスティクス、脳・認知症イメージング、PET定量解析。">
+  <div class="two-col">
+    <article class="main prose">
+      <p>診断と治療を同じ分子で結ぶ「セラノスティクス」と、画像を数値にする「定量・AI」。この2つを軸に、臨床に直結する研究を行っています。</p>
+
+      <h2 id="cardiac">心臓核医学と人工知能</h2>
+      <ul>
+        <li>心筋血流 SPECT の定量化と減弱補正、日本人標準データベースの構築（J-ACCESS 研究など）</li>
+        <li>I-123 MIBG 交感神経イメージングの標準化（H/M比の自動化、洗い出し率）と国際共同研究</li>
+        <li>人工知能による心事故・心不全死・致死的不整脈のリスク予測（欧州心臓学会プレスリリース、2019年）と計算ツールの公開</li>
+        <li>Tc-99m ピロリン酸シンチグラフィの三次元定量による心アミロイドーシスの診断・予後予測</li>
+        <li>米国 Cedars-Sinai Medical Center との gated SPECT 定量化に関する共同研究</li>
+      </ul>
+
+      <h2 id="theranostics">核医学治療（セラノスティクス）</h2>
+      <ul>
+        <li>68Ga-PSMA-11 PET の国内第I相医師主導治験（2020〜2022年）、前立腺癌に対する PSMA 治療</li>
+        <li>高リスク神経芽腫に対する I-131 MIBG 治療：先進医療Bから保険診療へ。MIBG 療法後の免疫応答と抗GD2抗体療法併用の研究</li>
+        <li>難治性褐色細胞腫・パラガングリオーマの MIBG 治療（第II相治験）</li>
+        <li>バセドウ病・分化型甲状腺癌に対する内用療法の次世代治療戦略</li>
+        <li>線量評価（dosimetry）に基づく個別化治療：標的アイソトープ治療線量評価研究会の運営</li>
+        <li>Claudin18.2 標的ペプチドを用いた胃がんのセラノスティクス（AMED、国立がん研究センターとの共同）</li>
+      </ul>
+
+      <h2 id="neuro">脳・認知症イメージング</h2>
+      <ul>
+        <li>心筋 MIBG によるレビー小体病の確率評価指標（SMILe index）の開発と計算ツールの公開</li>
+        <li>アミロイド PET・タウ PET、認知症予防プログラムへの応用</li>
+        <li>人工知能と脳神経核医学</li>
+      </ul>
+
+      <h2 id="pet">PET定量解析・腫瘍核医学</h2>
+      <ul>
+        <li>PET 定量指標（代謝腫瘍体積など）と機械学習による診断支援・予後予測</li>
+        <li>骨シンチグラフィの AI 解析</li>
+        <li>大規模言語モデル（LLM）の画像診断レポートへの応用</li>
+      </ul>
+
+      <h2>公開している臨床ツール</h2>
+      <ul>
+        <li>心不全死および致死的不整脈のリスク推定 計算ツール（2026年）</li>
+        <li>SMILe index 計算ツール（2026年）</li>
+        <li>Heart Risk Table：心筋SPECT施行患者の心事故予後予測</li>
+        <li>心臓核医学の正常値一覧とノート</li>
+        <li>食道シンチグラフィ（食道通過検査）解析ソフトウェア</li>
+      </ul>
+      <p class="todo">各ツールへのリンク（旧サイト lectures/works 配下）を確認して追加してください。</p>
+
+      <h2>進行中の研究に関する公示</h2>
+      <p>当科で実施している臨床研究のうち、通常の診療で得られた情報を用いる研究については、研究対象者の皆さまへ情報を公開しています（オプトアウト）。<a href="https://nucmed.w3.kanazawa-u.ac.jp/kouji/" target="_blank" rel="noopener">公示一覧（旧サイト）</a></p>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="研究">
+        <a href="#cardiac"><span>心臓核医学とAI</span><span class="en">→</span></a>
+        <a href="#theranostics"><span>セラノスティクス</span><span class="en">→</span></a>
+        <a href="#neuro"><span>脳・認知症</span><span class="en">→</span></a>
+        <a href="#pet"><span>PET定量解析</span><span class="en">→</span></a>
+        <a href={url('/achievements/')}><span>業績・研究費・受賞</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

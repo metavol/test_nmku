@@ -1,0 +1,62 @@
+---
+import Page from '../layouts/Page.astro';
+import { url } from '../lib/site';
+
+const staff = [
+  { name: '平田 健司', en: 'Kenji Hirata', role: '教授（第四代）・核医学診療科長', field: '核医学診断、核医学治療、人工知能（AI）' },
+  { name: '絹谷 清剛', en: 'Seigo Kinuya', role: '副学長・理事（第三代教授）', field: '腫瘍、免疫核医学、核医学治療' },
+  { name: '萱野 大樹', en: 'Daiki Kayano', role: '准教授', field: '腫瘍、核医学治療、甲状腺' },
+  { name: '稲木 杏吏', en: 'Anri Inaki', role: '特任准教授（国立がん研究センター 分野長 併任）', field: '甲状腺、核医学治療' },
+  { name: '若林 大志', en: 'Hiroshi Wakabayashi', role: '講師・医局長', field: '腫瘍、心臓、核医学治療' },
+  { name: '渡辺 悟', en: 'Satoru Watanabe', role: '講師・教育医長', field: '腫瘍、心臓、核医学治療' },
+  { name: '廣正 智', en: 'Tomo Hiromasa', role: '助教・病棟医長', field: '核医学治療、腫瘍' },
+  { name: '森 博史', en: 'Hiroshi Mori', role: '助教・外来医長', field: '核医学治療、画像診断' },
+  { name: '赤谷 憲一', en: 'Norihito Akatani', role: '助教・研究医長', field: '腫瘍、核医学治療' },
+];
+const fellows = ['國田 優志（医員）', '高田 亜希（医員）', '松村 武史（医員・大学院生）', '吉田 智貴（医員）', '嶋崎 幹大（医員・大学院生）', 'Vu Hoang Minh Chau（大学院生）', '楊 新竹（大学院生）', '姚 建偉（大学院生）'];
+const collaborators = [
+  { name: '中嶋 憲一', role: '協力研究員（前 特任教授）', field: '心臓、機器（SPECT・PET）、データ解析、ソフトウェア開発、AI' },
+  { name: '齊藤 晋太郎', role: '協力研究員（留学中）', field: '' },
+  { name: '瀧 淳一', role: '金沢先進医学センター PETセンター長', field: '' },
+];
+const alumni = ['奥田 光一（2026年より 金沢大学医薬保健研究域保健学系 教授）', '山瀬 喬史（2024年より 公立松任石川中央病院）', '望月 孝史（2022年より 金沢医科大学病院 特任教授）', '松尾 信郎（2019年より 松尾医院 院長）', '松成 一朗（2015年より 埼玉医科大学病院 核医学診療科 教授）', '福岡 誠（2014年より 石川県立中央病院）', '陳 卓勍', '虎谷 文音', '張 雪'];
+---
+<Page title="スタッフ紹介" en="Staff" description="金沢大学核医学のスタッフ紹介。" crumbs={[{ href: '/about/', label: '教室紹介' }]}>
+  <p class="todo" style="max-width:760px">顔写真・詳細プロフィール（出身大学、資格、学会役職など）は旧サイトおよび各先生から収集して追加してください。</p>
+  <h2 class="h3" style="margin:40px 0 24px">教員</h2>
+  <div class="grid grid-3">
+    {staff.map((s) => (
+      <div class="person">
+        <div class="placeholder" style="aspect-ratio:1/1">[ 写真 ]</div>
+        <span class="serif name">{s.name}</span>
+        <span class="en" style="font-size:12px;letter-spacing:.1em;color:var(--muted)">{s.en}</span>
+        <span class="role">{s.role}</span>
+        <span class="field">{s.field}</span>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="h3" style="margin:64px 0 16px">医員・大学院生</h2>
+  <ul class="plain">{fellows.map((f) => <li>{f}</li>)}</ul>
+
+  <h2 class="h3" style="margin:48px 0 16px">協力研究員・関連施設</h2>
+  <ul class="plain">{collaborators.map((c) => <li><b>{c.name}</b>　{c.role}{c.field && `　／　${c.field}`}</li>)}</ul>
+
+  <h2 class="h3" style="margin:48px 0 16px">歴代教授</h2>
+  <ul class="plain"><li>初代　久田 欣一</li><li>第二代　利波 紀久</li><li>第三代　絹谷 清剛</li><li>第四代　平田 健司（2026年〜）</li></ul>
+
+  <h2 class="h3" style="margin:48px 0 16px">当科出身の先生（2010年以降）</h2>
+  <ul class="plain">{alumni.map((a) => <li>{a}</li>)}</ul>
+
+  <p style="margin-top:56px"><a class="btn" href={url('/about/')}>教室紹介へ戻る</a></p>
+</Page>
+
+<style>
+  .person { display: flex; flex-direction: column; gap: 4px; background: #fff; border: 1px solid var(--line); padding: 20px; }
+  .person .name { font-size: 20px; font-weight: 600; margin-top: 10px; }
+  .person .role { font-size: 14px; color: var(--ink); }
+  .person .field { font-size: 13px; color: var(--ink-soft); }
+  .plain { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px 32px; max-width: 900px; }
+  .plain li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  @media (max-width: 900px) { .plain { grid-template-columns: 1fr; } }
+</style>

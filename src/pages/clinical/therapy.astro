@@ -1,0 +1,44 @@
+---
+import Page from '../../layouts/Page.astro';
+import { url, SITE } from '../../lib/site';
+---
+<Page title="核医学治療" en="Radionuclide Therapy" crumbs={[{ href: '/clinical/', label: '診療' }]} description="金沢大学で行っている核医学治療（RI内用療法、セラノスティクス）のご案内。">
+  <div class="two-col">
+    <article class="main prose">
+      <p>核医学治療（RI内用療法）は、ベータ線またはアルファ線を出す放射性医薬品を投与し、病気の部位だけに放射線を届ける治療です。適切な配慮のもとで行えば、副作用は比較的少ない治療です。当科は国内でも早くから核医学治療に取り組んできました。</p>
+
+      <h2>甲状腺疾患</h2>
+      <h3>バセドウ病（甲状腺機能亢進症）の I-131 治療</h3>
+      <p>放射性ヨウ素を含むカプセルを1回内服する治療です。甲状腺に集まって甲状腺を壊すため、バセドウ病を治すことができます。詳しくは<a href={url('/patients/thyroid/')}>患者さん向けの説明</a>をご覧ください。</p>
+      <h3>甲状腺癌の I-131 治療</h3>
+      <p>手術後に残った甲状腺組織や転移に対して行います。治療前には<a href={url('/patients/diet/')}>ヨウ素制限の食事療法</a>が必要です。</p>
+
+      <h2>がんの核医学治療</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>治療</th><th>対象</th><th>当科での経緯</th></tr></thead>
+        <tbody>
+          <tr><th>PRRT（Lu-177 DOTATATE、ルタテラ）</th><td>ソマトスタチン受容体陽性の神経内分泌腫瘍</td><td>2021年10月から Lu-177 による治療を開始。主治医を通じてご紹介ください。</td></tr>
+          <tr><th>PSMA治療（Lu-177 PSMA）</th><td>去勢抵抗性前立腺癌</td><td>2025年9月に国内承認。当科は 68Ga-PSMA-11 PET の医師主導治験を実施。</td></tr>
+          <tr><th>I-131 MIBG 治療</th><td>難治性褐色細胞腫・パラガングリオーマ、高リスク神経芽腫</td><td>先進医療Bを経て保険診療へ。小児MIBG治療は2025年9月から保険診療。</td></tr>
+          <tr><th>Ra-223（ゾーフィゴ）</th><td>去勢抵抗性前立腺癌の骨転移</td><td>2016年から。外来で注射し、骨転移による痛みの軽減を目的とします。</td></tr>
+          <tr><th>Y-90 イブリツモマブ（ゼヴァリン）</th><td>CD20陽性の再発・難治性低悪性度B細胞性非ホジキンリンパ腫、マントル細胞リンパ腫</td><td>2008年9月から。大学病院で診療中の方は主治医に、他院の方は血液内科へご相談ください。</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2>治療病室</h2>
+      <p>I-131 治療などで入院が必要な場合は、専用の治療病室（RI病室）で行います。小児の MIBG 治療にも対応しています。</p>
+      <p class="todo">治療病室の写真、入院の流れ、各治療の患者さん向けパンフレット（PDF）へのリンクを追加してください。</p>
+
+      <h2>お問い合わせ</h2>
+      <p>電話 {SITE.tel}　／　メール {SITE.email}</p>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="核医学治療">
+        <a href={url('/clinical/')}><span>診療のご案内</span><span class="en">→</span></a>
+        <a href={url('/clinical/exams/')}><span>核医学検査・専門分野</span><span class="en">→</span></a>
+        <a href={url('/patients/thyroid/')}><span>バセドウ病の治療（患者さん向け）</span><span class="en">→</span></a>
+        <a href={url('/patients/diet/')}><span>ヨウ素制限の食事療法</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

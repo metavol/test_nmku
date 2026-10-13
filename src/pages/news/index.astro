@@ -1,0 +1,60 @@
+---
+import Page from '../../layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { url, fmtDate } from '../../lib/site';
+
+const all = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const years = [...new Set(all.map((n) => n.data.date.getFullYear()))];
+const cats = ['トピックス', '論文', '受賞', '学会', '医局', '診療', '教育'];
+---
+<Page title="お知らせ" en="News" description="金沢大学核医学のお知らせ一覧。論文・受賞・学会・医局の最新情報。">
+  <div class="two-col">
+    <div class="main">
+      <div class="filters" role="group" aria-label="カテゴリで絞り込み">
+        <button class="chip" data-cat="" aria-pressed="true">すべて</button>
+        {cats.map((c) => <button class="chip" data-cat={c} aria-pressed="false">{c}</button>)}
+      </div>
+      {years.map((y) => (
+        <section class="year" data-year={y}>
+          <h2 class="en yr">{y}</h2>
+          <div style="border-top:1px solid var(--line-strong)">
+            {all.filter((n) => n.data.date.getFullYear() === y).map((n) => (
+              <div class="news-row" data-cat={n.data.category}>
+                <span class="date">{fmtDate(n.data.date)}</span>
+                <span class="tag">{n.data.category}</span>
+                <a href={url(`/news/${n.id}/`)}>{n.data.title}</a>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="年別">
+        {years.map((y) => <a href={`#y${y}`}><span class="en">{y}</span><span class="en">→</span></a>)}
+      </nav>
+    </aside>
+  </div>
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+    const rows = document.querySelectorAll<HTMLElement>('.news-row');
+    chips.forEach((c) => c.addEventListener('click', () => {
+      chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+      const cat = c.dataset.cat || '';
+      rows.forEach((r) => { r.hidden = !!cat && r.dataset.cat !== cat; });
+      document.querySelectorAll<HTMLElement>('.year').forEach((s) => {
+        s.hidden = ![...s.querySelectorAll<HTMLElement>('.news-row')].some((r) => !r.hidden);
+      });
+    }));
+    document.querySelectorAll<HTMLElement>('.year').forEach((s) => { s.id = `y${s.dataset.year}`; });
+  </script>
+</Page>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .chip { min-height: 40px; padding: 0 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; font-size: 13px; cursor: pointer; color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .year { margin-bottom: 48px; }
+  .yr { font-size: 28px; letter-spacing: .1em; color: var(--navy); margin-bottom: 12px; font-family: var(--font-en); font-weight: 500; }
+</style>

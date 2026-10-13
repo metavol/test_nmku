@@ -1,0 +1,41 @@
+---
+import Page from '../../layouts/Page.astro';
+import { url } from '../../lib/site';
+const L = 'https://nucmed.w3.kanazawa-u.ac.jp';
+---
+<Page title="ヨウ素制限の食事療法" en="Low-Iodine Diet" crumbs={[{ href: '/patients/', label: '患者さんへ' }]} description="甲状腺の検査・治療の前に行うヨウ素制限食の考え方と献立例。">
+  <div class="two-col">
+    <article class="main prose">
+      <h2>なぜヨウ素を制限するのか</h2>
+      <p>甲状腺は、主に海藻類に含まれるヨウ素を材料に甲状腺ホルモンを作ります。ヨウ素を多く含む食事をしたまま検査を受けると、甲状腺の働きを正しく測定できません。また放射性ヨウ素による治療では、効果が十分に得られなくなります。そのため、検査・治療の2週間前から「ヨウ素を制限した食事」を行います。</p>
+
+      <h2>食事療法のポイント</h2>
+      <ol>
+        <li>ヨウ素を多く含む食品と、ほとんど含まない食品を知る</li>
+        <li>食品の原材料表示を確認する</li>
+        <li>外食はしない</li>
+        <li>疑問に思う食品は口にしない</li>
+      </ol>
+
+      <h2>ヨウ素を多く含む食品（避ける）</h2>
+      <ul>
+        <li>海藻類：昆布、わかめ、ひじき、のり、もずく、寒天、昆布だし・だしの素</li>
+        <li>魚介類の一部、魚卵、貝類</li>
+        <li>昆布エキス・海藻エキスを含む加工食品、調味料</li>
+        <li>ヨウ素卵、イソジンなどのうがい薬、一部の薬品・サプリメント</li>
+      </ul>
+      <p class="todo">対象食品の詳細表・1週間の献立・Q&amp;A・低ヨウ素食レシピ集を旧サイトから移行してください：
+        <a href={`${L}/diet/`} target="_blank" rel="noopener">ヨウ素制限の食事療法</a>、
+        <a href={`${L}/works/detail.php?d_no=4`} target="_blank" rel="noopener">ヨード制限食と薬品</a>、
+        <a href={`${L}/works/detail.php?d_no=78`} target="_blank" rel="noopener">ヨウ素制限に影響する薬品</a>
+      </p>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="関連ページ">
+        <a href={url('/patients/')}><span>患者さんへ</span><span class="en">→</span></a>
+        <a href={url('/patients/thyroid/')}><span>バセドウ病の治療</span><span class="en">→</span></a>
+        <a href={url('/clinical/therapy/')}><span>核医学治療</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

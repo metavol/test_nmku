@@ -1,0 +1,30 @@
+---
+// 下層ページ共通：紺色のページヘッダ＋本文
+import Base from './Base.astro';
+import { url } from '../lib/site';
+
+interface Crumb { href?: string; label: string }
+interface Props {
+  title: string;
+  en?: string;
+  description?: string;
+  crumbs?: Crumb[];
+}
+const { title, en, description, crumbs = [] } = Astro.props;
+---
+<Base title={title} description={description}>
+  <div class="page-head">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:18px">
+      <nav class="breadcrumb" aria-label="パンくず">
+        <a href={url('/')}>ホーム</a>
+        {crumbs.map((c) => (<><span aria-hidden="true">/</span>{c.href ? <a href={url(c.href)}>{c.label}</a> : <span>{c.label}</span>}</>))}
+        <span aria-hidden="true">/</span><span>{title}</span>
+      </nav>
+      {en && <span class="sub">{en}</span>}
+      <h1>{title}</h1>
+    </div>
+  </div>
+  <div class="wrap sec-tight">
+    <slot />
+  </div>
+</Base>

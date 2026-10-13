@@ -1,0 +1,51 @@
+---
+import Page from '../../layouts/Page.astro';
+import { url, SITE } from '../../lib/site';
+---
+<Page title="患者さん・ご家族へ" en="For Patients" description="核医学検査を受ける患者さんへ：検査の流れ、安全性、妊娠と核医学検査、甲状腺の治療、ヨウ素制限食。">
+  <div class="two-col">
+    <article class="main prose">
+      <h2 id="exam">核医学検査とは</h2>
+      <p>微量の放射性医薬品を注射（あるいは内服）し、薬が病気の部位や臓器に集まる様子を専用のカメラで撮影する検査です。臓器の「はたらき」を調べることができ、ほとんどが安全で副作用の少ない検査です。検査で受ける放射線の量は、通常のCT検査と同程度かそれ以下です。</p>
+      <h3>検査の流れ</h3>
+      <ol>
+        <li>主治医から核医学検査の説明を受け、予約します。</li>
+        <li>検査当日、放射性医薬品を注射します。薬が集まるまで待ち時間がある検査もあります（数十分〜数時間、検査によっては翌日）。</li>
+        <li>専用のカメラ（SPECT、PET）で撮影します。撮影中は静かに横になっていただきます。</li>
+        <li>結果は核医学専門医が読影し、主治医に報告します。</li>
+      </ol>
+      <p class="todo">検査ごとの所要時間・食事制限・注意点の表を追加してください。</p>
+
+      <h2 id="pregnancy">妊娠と核医学検査</h2>
+      <p>通常の核医学検査で胎児に奇形・精神発達遅滞・発育遅延が生じることはないとされています。検査による胎児の被ばくは、確定的影響のしきい線量（約100mGy）を大きく下回るためです。胎児の被ばく線量は、Tc-99m を用いた多くの検査で 10mGy 以下です。検査で胎児が被ばくしたことを理由に妊娠中絶をすべきではない、というのが基本的な考え方です。</p>
+      <p>一方、核医学治療（甲状腺機能亢進症や甲状腺がんに対する I-131 治療など）は妊婦には行えません。検査とは別物として扱われます。妊娠中に検査が必要な場合は、検査の必要性と母体のリスクを比べたうえで判断します。個別の状況は担当医にご確認ください。</p>
+
+      <h2 id="thyroid">甲状腺の検査・治療</h2>
+      <div class="grid grid-2" style="margin:24px 0">
+        <a class="card" href={url('/patients/thyroid/')}><span class="t">バセドウ病の治療</span><span class="d">抗甲状腺薬・放射性ヨウ素（I-131）治療・手術の3つの選択肢</span></a>
+        <a class="card" href={url('/patients/diet/')}><span class="t">ヨウ素制限の食事療法</span><span class="d">検査・治療前2週間の食事の考え方と献立例</span></a>
+      </div>
+
+      <h2 id="therapy">がんの核医学治療</h2>
+      <p>神経内分泌腫瘍（PRRT）、前立腺癌（PSMA治療、Ra-223）、褐色細胞腫・神経芽腫（MIBG治療）などの核医学治療を行っています。詳しくは<a href={url('/clinical/therapy/')}>核医学治療のページ</a>をご覧ください。</p>
+
+      <h2>外来・予約</h2>
+      <ul>
+        <li>予約や変更：核医学外来受付（電話 076-265-2000、核医学外来 265-2900）</li>
+        <li>初診は原則として月・水・金曜です。</li>
+        <li>詳しくは<a href={url('/clinical/')}>診療のご案内</a>をご覧ください。</li>
+      </ul>
+      <p class="note">電子メールによる医療相談には対応していません。ご了承ください。</p>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="患者さんへ">
+        <a href="#exam"><span>核医学検査とは</span><span class="en">→</span></a>
+        <a href="#pregnancy"><span>妊娠と核医学検査</span><span class="en">→</span></a>
+        <a href={url('/patients/thyroid/')}><span>バセドウ病の治療</span><span class="en">→</span></a>
+        <a href={url('/patients/diet/')}><span>ヨウ素制限の食事療法</span><span class="en">→</span></a>
+        <a href={url('/clinical/therapy/')}><span>がんの核医学治療</span><span class="en">→</span></a>
+        <a href={url('/clinical/')}><span>外来診療のご案内</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

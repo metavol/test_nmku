@@ -1,0 +1,35 @@
+---
+import Page from '../layouts/Page.astro';
+import { url } from '../lib/site';
+---
+<Page title="教授あいさつ" en="Message" description="金沢大学核医学 教授 平田健司からのごあいさつ。">
+  <div class="two-col">
+    <article class="main prose">
+      <p class="todo">下書きです。先生ご自身の言葉に差し替えてください（この囲みは公開時に削除）。</p>
+      <h2>ごあいさつ</h2>
+      <p>2026年10月1日付で、金沢大学医薬保健研究域医学系 核医学の教授を拝命しました平田健司です。</p>
+      <p>金沢大学核医学は1973年、国立大学で初めて開講した核医学の専門講座です。久田欣一初代教授、利波紀久教授、絹谷清剛教授のもとで築かれてきた歴史と伝統を大切にしながら、診療・研究・教育のそれぞれにおいて、次の世代の核医学をここ金沢から形にしていきたいと考えています。</p>
+      <p>核医学は、からだの「はたらき」を画像にする医学です。がん、心臓病、脳疾患、甲状腺疾患の診断に加えて、同じしくみで病気の部位だけに放射線を届ける核医学治療（セラノスティクス）が、いま大きく広がっています。当科はこれらを一つの科で担える、国内でも数少ない教室です。</p>
+      <p>私自身は、PETの定量解析、医療AI・大規模言語モデルの画像診断への応用、線量評価（dosimetry）に基づく核医学治療を長く研究してきました。これらを金沢大学の強みである心臓核医学・甲状腺診療・核医学治療の実績と組み合わせ、総合的な核医学診療と、データに基づく研究を進めます。</p>
+      <p>スタッフと大学院生が楽しく働き、学び、研修医の先生方が「入局したい」と思える教室を目指します。見学やご相談はいつでも歓迎します。</p>
+      <p style="margin-top:40px"><span class="serif" style="font-size:20px;color:var(--ink)">平田 健司</span><br /><span class="en" style="font-size:12px;letter-spacing:.14em;color:var(--muted)">Kenji Hirata, MD, PhD</span></p>
+
+      <h2>略歴</h2>
+      <ul>
+        <li>2002年　北海道大学医学部 卒業、北海道大学 核医学講座（玉木長良教授）入局</li>
+        <li>2012–2014年　米国UCLA（Sung-Cheng Huang博士）留学</li>
+        <li>北海道大学病院 核医学診療科長、北海道大学大学院 画像診断学 准教授を経て</li>
+        <li>2026年10月　金沢大学医薬保健研究域医学系 核医学 教授</li>
+      </ul>
+      <p>核医学専門医、放射線診断専門医、第1種放射線取扱主任者。</p>
+    </article>
+    <aside class="aside">
+      <div class="placeholder" style="aspect-ratio:4/5;margin-bottom:16px">[ 教授ポートレート写真 ]</div>
+      <nav class="side-nav" aria-label="関連ページ">
+        <a href={url('/about/')}><span>教室紹介・沿革</span><span class="en">→</span></a>
+        <a href={url('/staff/')}><span>スタッフ紹介</span><span class="en">→</span></a>
+        <a href={url('/teaching/')}><span>教育／研修</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>

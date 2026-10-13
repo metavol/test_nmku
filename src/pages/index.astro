@@ -1,0 +1,259 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { SITE, url, fmtDate } from '../lib/site';
+
+const news = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = news.slice(0, 6);
+const top = news[0];
+---
+<Base>
+  <!-- HERO -->
+  <section class="hero dark">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap inner">
+      <div class="copy">
+        <h1>見えないものを、<br />診る。治す。</h1>
+        <p class="en sub">Seeing the invisible, treating the disease.<br />Department of Nuclear Medicine, Kanazawa University</p>
+        <p class="desc">1973年、国立大学で初めて開講した核医学の専門講座。がん・心臓・脳・甲状腺の画像診断から、放射性医薬品による核医学治療（セラノスティクス）まで、ひとつの科で担っています。</p>
+      </div>
+      <div class="ctas">
+        <a class="btn light" href={url('/message/')}>教授あいさつ</a>
+        <a class="btn light" href={url('/teaching/')}>学生・研修医の方へ</a>
+      </div>
+    </div>
+    {top && (
+      <div class="ticker">
+        <div class="wrap row">
+          <span class="en lbl">NEWS</span>
+          <span class="en date">{fmtDate(top.data.date)}</span>
+          <a href={url(`/news/${top.id}/`)} class="ttl">{top.data.title}</a>
+          <a href={url('/news/')} class="en all">ALL →</a>
+        </div>
+      </div>
+    )}
+  </section>
+
+  <!-- MESSAGE -->
+  <section class="sec" id="message">
+    <div class="wrap msg">
+      <div class="text">
+        <span class="eyebrow">Message</span>
+        <h2 class="h2">がん、心臓、脳、甲状腺。<br />からだの「はたらき」を画像にする医学。</h2>
+        <p class="lead">微量の放射性医薬品が病気の部位に集まる性質を利用して、臓器のはたらきそのものを画像化するのが核医学です。PET・SPECTによる診断に加え、同じしくみでがん細胞だけを狙い撃つ核医学治療（RI内用療法）を、金沢大学は半世紀にわたって切り拓いてきました。2026年10月より平田健司教授のもと、総合的な核医学診療と、AI・定量解析を軸にした研究をさらに進めます。</p>
+        <div><a class="btn" href={url('/message/')}>教授あいさつを読む</a></div>
+      </div>
+      <div class="portrait">
+        <div class="placeholder" style="aspect-ratio:4/5">[ 教授ポートレート写真 ]</div>
+        <div class="cap">
+          <span class="serif name">平田 健司</span>
+          <span class="en role">Kenji Hirata, MD, PhD　教授・核医学診療科長</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <a class="tile" href={url('/clinical/')} style="--tint:#1d3550">
+      <span class="en lbl">CLINICAL</span>
+      <span class="serif ttl">診療</span>
+      <span class="d">PET/SPECT診断、甲状腺のI-131治療、PRRT、PSMA治療、MIBG治療、Ra-223治療</span>
+    </a>
+    <a class="tile" href={url('/research/')} style="--tint:#17494b">
+      <span class="en lbl">RESEARCH</span>
+      <span class="serif ttl">研究</span>
+      <span class="d">心臓核医学とAI、線量評価に基づくセラノスティクス、脳・認知症イメージング、PSMA医師主導治験</span>
+    </a>
+    <a class="tile" href={url('/teaching/')} style="--tint:#4a3a1e">
+      <span class="en lbl">TEACHING</span>
+      <span class="serif ttl">教育／研修</span>
+      <span class="d">学生実習・インターンシップ、研修医プログラム、大学院、核医学e-learning</span>
+    </a>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="sec">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:56px">
+      <div class="head-row">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span class="eyebrow">Research</span>
+          <h2 class="h2">診断から治療まで、ひとつの分子で。</h2>
+        </div>
+        <a class="btn" href={url('/research/')}>研究紹介</a>
+      </div>
+      <div class="grid grid-4">
+        <div class="card">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M4 18h6l3-8 5 16 4-10 2 2h8"/></svg>
+          <span class="t">心臓核医学・AI</span>
+          <span class="d">心筋血流・MIBG交感神経イメージングの標準化と、人工知能による心事故リスク予測。</span>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--teal)" stroke-width="1.5"><circle cx="18" cy="18" r="13"/><circle cx="18" cy="18" r="5"/><path d="M18 5v4M18 27v4M5 18h4M27 18h4"/></svg>
+          <span class="t">セラノスティクス</span>
+          <span class="d">PSMA・PRRT・MIBG・甲状腺癌。線量評価（dosimetry）に基づく個別化した核医学治療。</span>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M12 28c-5 0-8-4-8-9 0-6 5-12 14-12s14 6 14 12c0 5-3 9-8 9"/><path d="M14 28v4h8v-4"/></svg>
+          <span class="t">脳・認知症</span>
+          <span class="d">アミロイド・タウPET、レビー小体病の確率評価指標（SMILe index）など定量指標の開発。</span>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--teal)" stroke-width="1.5"><rect x="5" y="7" width="26" height="22" rx="2"/><path d="M5 15h26M13 7v22"/></svg>
+          <span class="t">腫瘍PET・定量解析</span>
+          <span class="d">PET定量指標と機械学習による診断支援、骨シンチグラフィのAI解析、臨床ツールの公開。</span>
+        </div>
+      </div>
+      <div class="facts grid grid-3">
+        <div><span class="serif big">1973</span><span>国立大学で初めて開講した核医学講座</span></div>
+        <div><span class="serif big">50<small>年＋</small></span><span>核医学診療・研究・教育の歩み</span></div>
+        <div><span class="serif big">IAEA</span><span>Rays of Hope パートナーシップ参加</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECRUIT -->
+  <section class="sec recruit" id="recruit">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:56px">
+      <div class="msg">
+        <div class="text">
+          <span class="eyebrow">Recruit</span>
+          <h2 class="h2">学生・研修医の方へ</h2>
+          <p class="lead">画像を読む力と、治療を組み立てる力。全身を診る核医学は、放射線科・内科・外科のどの分野にもつながります。医局説明会やインターンシップ（6年生実習）、病院見学はいつでも受け付けています。</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <a class="btn solid" href={url('/teaching/')}>教育／研修について</a>
+            <a class="btn" href={url('/contact/')}>見学を申し込む</a>
+          </div>
+        </div>
+        <nav class="side-nav" style="flex:0 0 420px;max-width:100%" aria-label="教育・研修リンク">
+          <a href={url('/teaching/#resident')}><span>研修医の皆さんへ</span><span class="en">→</span></a>
+          <a href={url('/teaching/#internship')}><span>インターンシップ（6年生実習）</span><span class="en">→</span></a>
+          <a href={url('/teaching/#graduate')}><span>大学院入学のご案内</span><span class="en">→</span></a>
+          <a href={url('/teaching/#elearning')}><span>核医学 e-learning</span><span class="en">→</span></a>
+        </nav>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;gap:18px">
+          <span class="eyebrow">Voices</span>
+          <span class="serif" style="font-size:22px;font-weight:600">先輩医師の声</span>
+        </div>
+        <div class="grid grid-3">
+          {[1, 2, 3].map(() => (
+            <a href={url('/teaching/#voices')} class="voice">
+              <div class="placeholder" style="aspect-ratio:4/3">[ 写真 ]</div>
+              <span class="serif q">「［一言メッセージ］」</span>
+              <span class="who">［入局年］入局　<b>［氏名］</b></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATIENTS -->
+  <section class="sec" id="patients">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:48px">
+      <div class="head-row">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span class="eyebrow">For Patients</span>
+          <h2 class="h2">患者さん・ご家族へ</h2>
+        </div>
+        <a class="btn" href={url('/patients/')}>外来診療のご案内</a>
+      </div>
+      <div class="grid grid-4">
+        <a class="card" href={url('/patients/#exam')}><span class="en num">01</span><span class="t">核医学検査とは</span><span class="d">検査の流れ、安全性、妊娠中の方へ</span></a>
+        <a class="card" href={url('/patients/thyroid/')}><span class="en num">02</span><span class="t">バセドウ病・甲状腺癌の治療</span><span class="d">放射性ヨウ素（I-131）による核医学治療</span></a>
+        <a class="card" href={url('/patients/diet/')}><span class="en num">03</span><span class="t">ヨウ素制限の食事療法</span><span class="d">制限食の考え方と低ヨウ素食レシピ集</span></a>
+        <a class="card" href={url('/clinical/therapy/')}><span class="en num">04</span><span class="t">がんの核医学治療</span><span class="d">PSMA・PRRT・MIBG・Ra-223 治療のご案内</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="sec newsec" id="news">
+    <div class="wrap two-col">
+      <div class="aside" style="display:flex;flex-direction:column;gap:20px;position:static">
+        <span class="eyebrow">News</span>
+        <h2 class="h2">お知らせ</h2>
+        <div><a class="btn" href={url('/news/')}>お知らせ一覧</a></div>
+        <p style="font-size:13px;color:var(--muted);margin-top:12px">日々の情報は Instagram・Facebook でも発信しています。</p>
+        <div style="display:flex;gap:12px">
+          <a class="en sns" href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
+          <a class="en sns" href={SITE.facebook} target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div class="main" style="border-top:1px solid var(--line-strong)">
+        {latest.map((n) => (
+          <div class="news-row">
+            <span class="date">{fmtDate(n.data.date)}</span>
+            <span class="tag">{n.data.category}</span>
+            <a href={url(`/news/${n.id}/`)}>{n.data.title}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; }
+  .glow { position: absolute; inset: 0; background:
+    radial-gradient(ellipse 60% 70% at 78% 40%, rgba(43,166,160,.45), rgba(14,26,43,0) 70%),
+    radial-gradient(ellipse 30% 40% at 62% 68%, rgba(232,168,56,.28), rgba(14,26,43,0) 70%); }
+  .hero .inner { position: relative; padding-block: 128px; display: flex; flex-direction: column; gap: 40px; }
+  .copy { display: flex; flex-direction: column; gap: 22px; max-width: 760px; }
+  .hero h1 { font-size: 60px; line-height: 1.32; letter-spacing: .04em; }
+  .hero .sub { font-size: 15px; letter-spacing: .14em; color: var(--sky); line-height: 1.7; }
+  .hero .desc { margin-top: 8px; line-height: 2; color: #e8eef3; max-width: 600px; }
+  .ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .ticker { position: relative; background: rgba(255,255,255,.08); border-top: 1px solid rgba(255,255,255,.14); }
+  .ticker .row { display: flex; align-items: center; gap: 24px; min-height: 60px; font-size: 14px; }
+  .ticker .lbl { font-size: 12px; letter-spacing: .3em; color: var(--teal-light); }
+  .ticker .date { color: var(--sky); font-variant-numeric: tabular-nums; }
+  .ticker .ttl { flex: 1; min-width: 0; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ticker .all { font-size: 12px; letter-spacing: .2em; color: #fff; white-space: nowrap; }
+
+  .msg { display: flex; gap: 72px; align-items: center; }
+  .msg .text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+  .portrait { flex: 0 0 440px; max-width: 100%; display: flex; flex-direction: column; gap: 14px; }
+  .portrait .cap { display: flex; flex-direction: column; line-height: 1.5; }
+  .portrait .name { font-size: 20px; font-weight: 600; }
+  .portrait .role { font-size: 12px; letter-spacing: .14em; color: var(--muted); }
+
+  .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--navy); }
+  .tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; min-height: 420px; padding: 40px; color: #fff;
+    background: linear-gradient(180deg, rgba(14,26,43,.1), rgba(14,26,43,.92)), var(--tint); transition: transform .25s ease; }
+  .tile:hover { transform: translateY(-4px); color: #fff; }
+  .tile .lbl { font-size: 12px; letter-spacing: .3em; color: var(--teal-light); }
+  .tile .ttl { font-size: 30px; font-weight: 600; letter-spacing: .04em; }
+  .tile .d { font-size: 14px; color: var(--sky); line-height: 1.8; }
+
+  .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+  .facts { padding-top: 24px; border-top: 1px solid var(--line-strong); }
+  .facts > div { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--ink-soft); }
+  .facts .big { font-size: 44px; font-weight: 600; color: var(--navy); line-height: 1.1; }
+  .facts small { font-size: 22px; }
+
+  .recruit { background: var(--paper-2); }
+  .recruit .msg { align-items: flex-start; }
+  .voice { display: flex; flex-direction: column; gap: 16px; color: var(--ink); }
+  .voice .placeholder { background: #d6dedc; }
+  .voice .q { font-size: 19px; font-weight: 600; line-height: 1.6; }
+  .voice .who { font-size: 13px; color: var(--muted); } .voice b { color: var(--ink); font-weight: 500; }
+  .card .num { font-size: 11px; letter-spacing: .2em; color: var(--teal); }
+
+  .newsec { background: #fff; border-top: 1px solid var(--line); }
+  .sns { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--line-strong); border-radius: 4px; font-size: 12px; letter-spacing: .14em; color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .hero .inner { padding-block: 80px; }
+    .hero h1 { font-size: 40px; }
+    .ticker .row { flex-wrap: wrap; padding-block: 12px; }
+    .ticker .ttl { white-space: normal; flex-basis: 100%; }
+    .msg { flex-direction: column; align-items: stretch; }
+    .portrait { flex: none; }
+    .pillars { grid-template-columns: 1fr; }
+    .tile { min-height: 240px; }
+    .head-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>

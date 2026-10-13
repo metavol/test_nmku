@@ -1,0 +1,25 @@
+---
+import Page from '../../layouts/Page.astro';
+import { getCollection, render } from 'astro:content';
+import { url, fmtDate } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const all = await getCollection('news');
+  return all.map((n) => ({ params: { id: n.id }, props: { entry: n } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Page title={entry.data.title} en="News" crumbs={[{ href: '/news/', label: 'お知らせ' }]}>
+  <article class="prose">
+    <p style="display:flex;gap:16px;align-items:center;margin-bottom:32px">
+      <span class="en" style="color:var(--muted);font-variant-numeric:tabular-nums">{fmtDate(entry.data.date)}</span>
+      <span class="tag">{entry.data.category}</span>
+    </p>
+    <Content />
+    {entry.data.legacyUrl && (
+      <p class="note">旧サイトの記事：<a href={entry.data.legacyUrl} target="_blank" rel="noopener">{entry.data.legacyUrl}</a></p>
+    )}
+    <p style="margin-top:48px"><a class="btn" href={url('/news/')}>お知らせ一覧へ</a></p>
+  </article>
+</Page>

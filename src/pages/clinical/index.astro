@@ -1,0 +1,42 @@
+---
+import Page from '../../layouts/Page.astro';
+import { url, SITE } from '../../lib/site';
+---
+<Page title="診療" en="Clinical" description="金沢大学附属病院 核医学診療科の診療内容。核医学検査（PET・SPECT）と核医学治療。">
+  <div class="two-col">
+    <article class="main prose">
+      <h2>診療内容</h2>
+      <p>全身各臓器の核医学画像診断に加え、甲状腺癌・甲状腺機能亢進症の核医学治療、神経内分泌腫瘍の核医学治療、褐色細胞腫・パラガングリオーマの核医学治療、癌の骨転移に対する核医学治療を行っています。</p>
+      <div class="grid grid-2" style="margin:32px 0 48px">
+        <a class="card" href={url('/clinical/exams/')}><span class="t">核医学検査</span><span class="d">SPECT・PETによる心臓・腫瘍・脳・内分泌の画像診断。各専門分野の紹介。</span></a>
+        <a class="card" href={url('/clinical/therapy/')}><span class="t">核医学治療</span><span class="d">I-131、PRRT、PSMA、MIBG、Ra-223 など放射性医薬品による治療。</span></a>
+      </div>
+
+      <h2>外来診療のご案内</h2>
+      <h3>核医学検査外来</h3>
+      <p>月〜金曜の午前・午後に実施しています。検査の種類によって実施できる曜日が異なります。PET検査の依頼は金沢先進医学センターが受け付けています。</p>
+      <h3>初診・再診</h3>
+      <p>初診は原則として月・水・金曜です。再診は担当医によって曜日が異なります。担当医表は旧サイトの<a href={SITE.hospitalOutpatient} target="_blank" rel="noopener">外来診療のご案内</a>をご確認ください。</p>
+      <p class="todo">担当医表（曜日別）を最新の表に差し替えてください。</p>
+      <h3>医療機関の皆さまへ</h3>
+      <ul>
+        <li>神経内分泌腫瘍に対するPRRT：主治医を通じてご紹介ください。外来で説明と必要な検査を行った上で治療を検討します。</li>
+        <li>骨転移治療（Ra-223、ゾーフィゴ）：外来で注射する治療です。ご依頼方法は外来へお問い合わせください。</li>
+      </ul>
+      <h3>予約・お問い合わせ</h3>
+      <ul>
+        <li>予約や変更：核医学外来受付（電話 076-265-2000、核医学外来 265-2900）</li>
+        <li>アイソトープ検査：アイソトープ部（内線 7360）</li>
+      </ul>
+      <p class="note">電子メールによる医療相談には対応していません。</p>
+    </article>
+    <aside class="aside">
+      <nav class="side-nav" aria-label="診療">
+        <a href={url('/clinical/')} aria-current="page"><span>診療のご案内</span><span class="en">→</span></a>
+        <a href={url('/clinical/exams/')}><span>核医学検査・専門分野</span><span class="en">→</span></a>
+        <a href={url('/clinical/therapy/')}><span>核医学治療</span><span class="en">→</span></a>
+        <a href={url('/patients/')}><span>患者さんへ</span><span class="en">→</span></a>
+      </nav>
+    </aside>
+  </div>
+</Page>
