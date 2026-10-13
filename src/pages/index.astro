@@ -10,6 +10,7 @@ const top = news[0];
 <Base>
   <!-- HERO -->
   <section class="hero dark">
+    <img class="hero-bg" src={url('/images/temp-hero.jpg')} alt="" width="1920" height="1081" fetchpriority="high" />
     <div class="glow" aria-hidden="true"></div>
     <div class="wrap inner">
       <div class="copy">
@@ -44,7 +45,7 @@ const top = news[0];
         <div><a class="btn" href={url('/message/')}>教授あいさつを読む</a></div>
       </div>
       <div class="portrait">
-        <div class="stamp"><img src={url('/images/hirata-portrait.png')} alt="平田健司教授の似顔絵（版画）" width="579" height="723" loading="lazy" /></div>
+        <img src={url('/images/temp-portrait.jpg')} alt="平田健司教授（仮画像）" width="1000" height="1250" loading="lazy" />
         <div class="cap">
           <span class="serif name">平田 健司</span>
           <span class="en role">Kenji Hirata, MD, PhD　教授・核医学診療科長</span>
@@ -55,17 +56,17 @@ const top = news[0];
 
   <!-- PILLARS -->
   <section class="pillars">
-    <a class="tile" href={url('/clinical/')} style="--tint:#1d3550">
+    <a class="tile" href={url('/clinical/')} style={`--tint:#1d3550;--img:url(${url('/images/temp-clinical.jpg')})`}>
       <span class="en lbl">CLINICAL</span>
       <span class="serif ttl">診療</span>
       <span class="d">PET/SPECT診断、甲状腺のI-131治療、PRRT、PSMA治療、MIBG治療、Ra-223治療</span>
     </a>
-    <a class="tile" href={url('/research/')} style="--tint:#17494b">
+    <a class="tile" href={url('/research/')} style={`--tint:#17494b;--img:url(${url('/images/temp-research.jpg')})`}>
       <span class="en lbl">RESEARCH</span>
       <span class="serif ttl">研究</span>
       <span class="d">心臓核医学とAI、線量評価に基づくセラノスティクス、脳・認知症イメージング、PSMA医師主導治験</span>
     </a>
-    <a class="tile" href={url('/teaching/')} style="--tint:#4a3a1e">
+    <a class="tile" href={url('/teaching/')} style={`--tint:#4a3a1e;--img:url(${url('/images/temp-teaching.jpg')})`}>
       <span class="en lbl">TEACHING</span>
       <span class="serif ttl">教育／研修</span>
       <span class="d">学生実習・インターンシップ、研修医プログラム、大学院、核医学e-learning</span>
@@ -197,9 +198,10 @@ const top = news[0];
 
 <style>
   .hero { position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
   .glow { position: absolute; inset: 0; background:
-    radial-gradient(ellipse 60% 70% at 78% 40%, rgba(43,166,160,.45), rgba(14,26,43,0) 70%),
-    radial-gradient(ellipse 30% 40% at 62% 68%, rgba(232,168,56,.28), rgba(14,26,43,0) 70%); }
+    linear-gradient(90deg, rgba(14,26,43,.92) 0%, rgba(14,26,43,.78) 45%, rgba(14,26,43,.35) 100%),
+    linear-gradient(180deg, rgba(14,26,43,.2), rgba(14,26,43,.6)); }
   .hero .inner { position: relative; padding-block: 128px; display: flex; flex-direction: column; gap: 40px; }
   .copy { display: flex; flex-direction: column; gap: 22px; max-width: 760px; }
   .hero h1 { font-size: 60px; line-height: 1.32; letter-spacing: .04em; }
@@ -224,7 +226,7 @@ const top = news[0];
 
   .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--navy); }
   .tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; min-height: 420px; padding: 40px; color: #fff;
-    background: linear-gradient(180deg, rgba(14,26,43,.1), rgba(14,26,43,.92)), var(--tint); transition: transform .25s ease; }
+    background: linear-gradient(180deg, rgba(14,26,43,.15), rgba(14,26,43,.9)), var(--img) center/cover var(--tint); transition: transform .25s ease; }
   .tile:hover { transform: translateY(-4px); color: #fff; }
   .tile .lbl { font-size: 12px; letter-spacing: .3em; color: var(--teal-light); }
   .tile .ttl { font-size: 30px; font-weight: 600; letter-spacing: .04em; }
